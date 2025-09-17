@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Menambahkan ini akan membuat folder 'out' saat build
+  output: 'export',
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  // Tambahan: jika gambar tidak muncul, Anda mungkin perlu ini
+  images: {
+    unoptimized: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
