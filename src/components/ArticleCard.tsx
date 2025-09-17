@@ -1,73 +1,55 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, Variants } from 'framer-motion';
-import { User, Calendar, Clock } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { User, Clock } from "lucide-react";
+import { StrapiArticle } from "@/types";
 
-// Definisikan tipe untuk prop artikel
-type Article = {
-  slug: string;
-  imageSrc: string;
-  category: string;
-  title: string;
-  author: string;
-  date: string;
-  readTime: number;
-  excerpt: string | React.ReactNode;
-};
+const STRAPI_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
-// Varian animasi untuk kartu saat di-scroll
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { type: 'spring', stiffness: 100, damping: 15 }
-  }
-};
+export default function ArticleCard({ article }: { article: StrapiArticle }) {
+  const { title, slug, excerpt, cover_image } = article;
 
-const ArticleCard = ({ article }: { article: Article }) => {
+  const imageUrl = cover_image?.formats?.small?.url
+    ? `${STRAPI_URL}${cover_image.formats.small.url}`
+    : cover_image?.url
+    ? `${STRAPI_URL}${cover_image.url}`
+    : "/images/placeholder.jpg";
+
   return (
-    <motion.div 
-      variants={cardVariants}
+    <motion.div
       whileHover={{ y: -8 }}
       className="bg-neutral-dark rounded-xl overflow-hidden shadow-lg flex flex-col h-full border border-white/10"
     >
-      <Link href={`/articles/${article.slug}`} className="block">
+      <Link href={`/articles/${slug}`} className="block">
         <div className="relative w-full h-52">
           <Image
-            src={article.imageSrc}
-            alt={article.title}
+            src={imageUrl}
+            alt={title || "Article Image"}
             fill
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          <span className="absolute top-4 left-4 bg-accent text-neutral-dark text-xs font-bold py-1 px-3 rounded-full">
-            {article.category}
-          </span>
         </div>
       </Link>
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="font-heading text-xl font-bold mb-3 hover:text-accent transition-colors">
-          <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+          <Link href={`/articles/${slug}`}>{title}</Link>
         </h3>
-        <p className="text-gray-400 text-sm mb-4 flex-grow">
-          {article.excerpt}
-        </p>
+        <p className="text-gray-400 text-sm mb-4 flex-grow">{excerpt}</p>
         <div className="border-t border-white/10 pt-4 mt-auto text-xs text-gray-500 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <User size={14} />
-            <span>{article.author}</span>
+            <span>Crypto Exist Team</span>
           </div>
           <div className="flex items-center gap-2">
             <Clock size={14} />
-            <span>{article.readTime} min read</span>
+            <span>5 min read</span>
           </div>
         </div>
       </div>
     </motion.div>
   );
-};
-
-export default ArticleCard;
+}

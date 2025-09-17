@@ -3,12 +3,11 @@
 import { useState, useEffect } from 'react';
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection"; 
-import LatestArticles from "@/components/LatestArticles";
 import StatisticsSection from "@/components/StatisticsSection";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import NewsletterModal from '@/components/NewsletterModal';
 
-export default function HomePageClient() {
+export default function HomePageClient({ children }: { children: React.ReactNode }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -32,7 +31,9 @@ export default function HomePageClient() {
       <NewsletterModal isOpen={isModalOpen} onClose={handleCloseModal} />
       <HeroSection />
       <FeaturesSection />
-      <LatestArticles />
+      
+      {children}
+
       <StatisticsSection />
       <NewsletterSignup />
     </>
