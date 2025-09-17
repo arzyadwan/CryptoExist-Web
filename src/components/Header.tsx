@@ -24,7 +24,7 @@ const Header = () => {
   }
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-background-start/80 dark:bg-background-start/80 backdrop-blur-lg border-b border-border-color">
+    <header className="fixed top-0 left-0 w-full z-50 bg-background-start/80 dark:bg-background-start/80 backdrop-blur-lg shadow-lg shadow-dark/10 dark:shadow-white/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="text-2xl font-bold font-heading text-text-primary">
