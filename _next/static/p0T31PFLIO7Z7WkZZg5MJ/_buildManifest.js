@@ -1,15 +1,10 @@
 self.__BUILD_MANIFEST = {
   "/_error": [
-    "./static/chunks/2902ecb737f96de8.js"
+    "./static/chunks/445b421232acdf86.js"
   ],
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [
-      {
-        "source": "/CryptoExist-Web//_next/:path+",
-        "destination": "/CryptoExist-Web/_next/:path+"
-      }
-    ],
+    "beforeFiles": [],
     "fallback": []
   },
   "sortedPages": [
