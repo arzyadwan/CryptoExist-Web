@@ -1,5 +1,6 @@
 'use client';
 
+import { Tooltip } from './Tooltip'; // 1. Impor komponen Tooltip
 import { motion, Variants } from 'framer-motion';
 import ArticleCard from './ArticleCard';
 
@@ -10,7 +11,17 @@ const articlesData = [
     imageSrc: '/images/artikel1.jpg',
     category: 'Analysis',
     title: 'The 2024 Bitcoin Halving: What It Means for Investors',
-    excerpt: 'A deep dive into the mechanics of Bitcoin halving and its potential impact on the market.',
+    excerpt: (
+      <>
+        Explore the most promising{' '}
+        <Tooltip content="Decentralized Finance: Financial services on the blockchain.">
+          <span className="text-accent border-b border-accent border-dashed cursor-help">
+            DeFi
+          </span>
+        </Tooltip>{' '}
+        platforms offering innovative solutions.
+      </>
+    ),
     author: 'Jane Doe',
     date: 'Sep 15, 2025',
     readTime: 7,
@@ -20,7 +31,17 @@ const articlesData = [
     imageSrc: '/images/artikel2.jpg', // Ganti dengan path gambar Anda
     category: 'Guide',
     title: 'Top 5 DeFi Platforms to Watch in Late 2025',
-    excerpt: 'Explore the most promising decentralized finance platforms offering innovative solutions.',
+    excerpt: (
+      <>
+        Explore the most promising{' '}
+        <Tooltip content="Explore the most promising decentralized finance platforms offering innovative solutions.">
+          <span className="text-accent border-b border-accent border-dashed cursor-help">
+            DeFi
+          </span>
+        </Tooltip>{' '}
+        platforms offering innovative solutions.
+      </>
+    ),
     author: 'John Smith',
     date: 'Sep 12, 2025',
     readTime: 9,
@@ -30,7 +51,17 @@ const articlesData = [
     imageSrc: '/images/artikel3.jpg', // Ganti dengan path gambar Anda
     category: 'Review',
     title: 'The Rise of NFTs: More Than Just Digital Art?',
-    excerpt: 'We review the evolution of Non-Fungible Tokens and their expanding use cases.',
+    excerpt: (
+      <>
+        Explore the most promising{' '}
+        <Tooltip content="Decentralized Finance: Financial services on the blockchain.">
+          <span className="text-accent border-b border-accent border-dashed cursor-help">
+            DeFi
+          </span>
+        </Tooltip>{' '}
+        platforms offering innovative solutions.
+      </>
+    ),
     author: 'Alex Ray',
     date: 'Sep 10, 2025',
     readTime: 6,

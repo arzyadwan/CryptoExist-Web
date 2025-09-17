@@ -5,23 +5,41 @@
   --color-primary: #0066FF;
   --color-primary-dark: #6B46C1;
   --color-accent: #FEE500;
-  --color-neutral-dark: #1F2937;
 
-  /* Font family dengan variable */
+  --color-neutral-dark: var(--neutral-dark);
+  --color-background-start: var(--background-start);
+  --color-background-end: var(--background-end);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border-color);
+
   --font-sans: var(--font-inter), sans-serif;
   --font-heading: var(--font-poppins), sans-serif;
 }
 
-/* Base styles */
+@layer base {
+  :root {
+    --background-start: 240 242 245;
+    --background-end: 255 255 255;
+    --text-primary: 15 23 42;
+    --text-secondary: 100 116 139;
+    --neutral-dark: 248 250 252;
+    --border-color: 226 232 240;
+  }
+
+  .dark {
+    --background-start: 15 15 35;
+    --background-end: 26 26 46;
+    --text-primary: 248 250 252;
+    --text-secondary: 156 163 175;
+    --neutral-dark: 31 41 55;
+    --border-color: 55 65 81;
+  }
+}
+
 @layer base {
   body {
-    @apply text-white antialiased;
-    font-family: var(--font-sans);
-    background: linear-gradient(
-      to bottom,
-      var(--color-background-start, #0F0F23),
-      var(--color-background-end, #1A1A2E)
-    );
+    @apply bg-gradient-to-br from-background-start to-background-end text-text-primary antialiased;
   }
 }
 

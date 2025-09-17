@@ -11,10 +11,10 @@ type Article = {
   imageSrc: string;
   category: string;
   title: string;
-  excerpt: string;
   author: string;
   date: string;
   readTime: number;
+  excerpt: string | React.ReactNode;
 };
 
 // Varian animasi untuk kartu saat di-scroll
