@@ -1,14 +1,14 @@
-import { fetchArticles } from '@/lib/strapi';
-import { StrapiArticle } from '@/types';
+// src/components/LatestArticles.tsx
+
+import { fetchLatestArticles } from "@/lib/strapi"; // 1. Ubah import
 import ArticleCard from './ArticleCard';
 import Link from 'next/link';
 
 export default async function LatestArticles() {
-  const articles: StrapiArticle[] = await fetchArticles();
+  // 2. Gunakan fungsi baru
+  const articles = await fetchLatestArticles();
 
-  // Console log untuk debugging di terminal Next.js
-  console.log("ARTICLES RECEIVED IN COMPONENT:", JSON.stringify(articles, null, 2));
-
+  // Tambahkan safety check untuk null
   if (!articles || articles.length === 0) {
     return (
       <section className="py-20 sm:py-28">

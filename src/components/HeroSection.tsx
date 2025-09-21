@@ -72,7 +72,7 @@ const HeroSection = () => {
               ]}
               wrapper="span"
               speed={50}
-              className="text-white font-medium"
+              className="text-text-primary font-medium"
               repeat={Infinity}
             />
           </motion.div>

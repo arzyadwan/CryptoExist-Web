@@ -1,10 +1,10 @@
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
-/* Definisi theme */
 @theme {
-  --color-primary: #0066FF;
-  --color-primary-dark: #6B46C1;
-  --color-accent: #FEE500;
+  --color-primary: #0066ff;
+  --color-primary-dark: #6b46c1;
+  --color-accent: #fee500;
 
   --color-neutral-dark: var(--neutral-dark);
   --color-background-start: var(--background-start);
@@ -41,13 +41,38 @@
   body {
     @apply bg-gradient-to-br from-background-start to-background-end text-text-primary antialiased;
   }
+
+  .prose {
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-text-primary font-heading;
+    }
+
+    a {
+      @apply text-accent hover:underline;
+    }
+
+    strong {
+      @apply text-text-primary;
+    }
+
+    blockquote {
+      @apply border-l-4 border-accent pl-4 italic;
+    }
+
+    li::marker {
+      @apply text-accent;
+    }
+  }
 }
 
-/* Components */
 @layer components {
   .btn-primary {
     @apply text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300;
-    background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
+    background: linear-gradient(
+      to right,
+      var(--color-primary),
+      var(--color-primary-dark)
+    );
   }
 
   .btn-accent {

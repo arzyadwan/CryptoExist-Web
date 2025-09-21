@@ -12,6 +12,12 @@ export interface StrapiImage {
   };
 }
 
+export interface StrapiCategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 // TIPE UTAMA YANG DIPERBAIKI
 export interface StrapiArticle {
   id: number;
@@ -24,4 +30,14 @@ export interface StrapiArticle {
   updatedAt: string;
   publishedAt: string;
   cover_image: StrapiImage; 
+  categories: StrapiCategory[];  
+}
+
+export interface PaginationMeta {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
 }
